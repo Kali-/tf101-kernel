@@ -3111,10 +3111,12 @@ static int fsl_udc_resume(struct platform_device *pdev)
 {
     printk("fsl_udc_resume+\n");
     if (udc_controller->transceiver) {
-
+        /* enable clock */
+        fsl_udc_clk_resume();
         if (!(fsl_readl(&usb_sys_regs->vbus_wakeup) & USB_SYS_ID_PIN_STATUS)) {
             /* If ID status is low means host is connected, return */
             printk("fsl_udc_resume-\n");
+            fsl_udc_clk_suspend();
 	    return 0;
         }
         /* check for VBUS */
