@@ -23,6 +23,10 @@ config TEGRA_GENERIC_CODEC
 config TEGRA_JACK
     tristate "Tegra wired accessory jack support"
 
+config TEGRA_VOODOO_SOUND
+    bool "Voodoo sound"
+    default y
+
 config HEADSET_FUNCTION
 	tristate "Headset detection function"
         default n    
